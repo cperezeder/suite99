@@ -432,9 +432,133 @@ footer {
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   .what-line { gap: 1.5rem; padding: 1rem 1.5rem; overflow-x: auto; }
 }
+/* Flash sale popup */
+#flashModal {
+  display: flex;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.88);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+#flashModal.hidden { display: none; }
+.flash-box {
+  background: var(--navy);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 3rem 2.5rem;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+.flash-close {
+  position: absolute;
+  top: 1rem; right: 1.2rem;
+  background: none; border: none;
+  color: var(--gold);
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.flash-tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.flash-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+}
+.flash-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+  margin-bottom: 1.8rem;
+}
+.flash-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.flash-old {
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.3);
+  text-decoration: line-through;
+}
+.flash-new {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+}
+.flash-scarcity {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 2rem;
+}
+.flash-btn {
+  display: block;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  transition: opacity 0.2s;
+}
+.flash-btn:hover { opacity: 0.88; }
+.flash-dismiss {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+.flash-dismiss:hover { color: rgba(255,255,255,0.5); }
 </style>
 </head>
 <body>
+
+<!-- FLASH SALE POPUP -->
+<div id="flashModal">
+  <div class="flash-box">
+    <button class="flash-close" onclick="closeModal()">✕</button>
+    <p class="flash-tag">⚠ Flash Sale — Ends Sunday Midnight</p>
+    <h2 class="flash-heading">First Month.<br>Half the Price.</h2>
+    <p class="flash-sub">Full personal brand management for DFW realtors. This week only.</p>
+    <div class="flash-price">
+      <span class="flash-old">$1,000</span>
+      <span class="flash-new">$500</span>
+    </div>
+    <p class="flash-scarcity">🔴 Only 2 spots at this price. When they're gone — they're gone.</p>
+    <a href="https://cal.com/carlos-perez-wn8kxs/free-discovery-call" target="_blank" class="flash-btn">Claim your spot now</a>
+    <button class="flash-dismiss" onclick="closeModal()">No thanks, I'll pay full price later</button>
+  </div>
+</div>
+<script>
+  function closeModal() {
+    document.getElementById('flashModal').classList.add('hidden');
+  }
+</script>
 
 <nav>
   <div class="logo">Suite <span>99</span></div>
@@ -526,12 +650,16 @@ footer {
       <p class="section-label">Pricing</p>
       <h2>One retainer. Everything included.</h2>
       <p>No hidden fees, no à la carte, no surprises. One flat monthly rate covers your full brand presence.</p>
-      <p style="margin-top: 1rem; font-size: 0.85rem; color: #b8946a; font-weight: 500; letter-spacing: 0.04em;">Only 5 spots available for Q2 — book your call before they're gone.</p>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: #b8946a; font-weight: 500; letter-spacing: 0.04em;">⚠ Flash sale ends Sunday — only 2 spots at this price.</p>
     </div>
     <div class="pricing-card">
       <div class="pricing-head">
-        <div class="price-amount">$1,000</div>
-        <div class="price-period">per month · cancel anytime</div>
+        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.3rem;">
+          <span style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:rgba(255,255,255,0.3); text-decoration:line-through;">$1,000</span>
+          <span style="font-size:0.68rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase;">Flash sale</span>
+        </div>
+        <div class="price-amount">$500</div>
+        <div class="price-period">this month only · then $1,000/mo · cancel anytime</div>
       </div>
       <div class="pricing-body">
         <ul class="feature-list">
@@ -553,7 +681,7 @@ footer {
 
 <div class="cta-section">
   <h2>Ready to own your market online?</h2>
-  <p>Only 5 spots available for Q2. Book your free 30-minute call before they're gone.</p>
+  <p>Flash sale ends Sunday midnight. First month is $500 instead of $1,000. Only 2 spots left — book now before someone else takes yours.</p>
   <a href="https://cal.com/carlos-perez-wn8kxs/free-discovery-call" target="_blank" class="btn-light">Book a free discovery call</a>
 </div>
 
