@@ -430,139 +430,22 @@ footer {
   .steps { grid-template-columns: 1fr 1fr; }
   .pricing-wrap { grid-template-columns: 1fr; gap: 2rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  #products .section > div:last-child { grid-template-columns: 1fr; }
   .what-line { gap: 1.5rem; padding: 1rem 1.5rem; overflow-x: auto; }
 }
-/* Flash sale popup */
-#flashModal {
-  display: flex;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.88);
-  z-index: 9999;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-}
-#flashModal.hidden { display: none; }
-.flash-box {
-  background: var(--navy);
-  border: 1px solid var(--gold);
-  border-radius: 4px;
-  padding: 3rem 2.5rem;
-  max-width: 500px;
-  width: 100%;
-  text-align: center;
-  position: relative;
-}
-.flash-close {
-  position: absolute;
-  top: 1rem; right: 1.2rem;
-  background: none; border: none;
-  color: var(--gold);
-  font-size: 1.4rem;
-  cursor: pointer;
-  line-height: 1;
-}
-.flash-tag {
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.2rem;
-}
-.flash-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.4rem;
-  font-weight: 400;
-  color: var(--white);
-  line-height: 1.15;
-  margin-bottom: 0.6rem;
-}
-.flash-sub {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.45);
-  font-weight: 300;
-  margin-bottom: 1.8rem;
-}
-.flash-price {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-.flash-old {
-  font-size: 1.3rem;
-  color: rgba(255,255,255,0.3);
-  text-decoration: line-through;
-}
-.flash-new {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3.5rem;
-  font-weight: 400;
-  color: var(--gold);
-  line-height: 1;
-}
-.flash-scarcity {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.4);
-  margin-bottom: 2rem;
-}
-.flash-btn {
-  display: block;
-  background: var(--gold);
-  color: var(--navy);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1rem 2rem;
-  border-radius: 2px;
-  margin-bottom: 1rem;
-  transition: opacity 0.2s;
-}
-.flash-btn:hover { opacity: 0.88; }
-.flash-dismiss {
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.25);
-  font-size: 0.75rem;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-}
-.flash-dismiss:hover { color: rgba(255,255,255,0.5); }
+
 </style>
 </head>
 <body>
 
-<!-- FLASH SALE POPUP -->
-<div id="flashModal">
-  <div class="flash-box">
-    <button class="flash-close" onclick="closeModal()">✕</button>
-    <p class="flash-tag">⚠ Flash Sale — Ends Sunday Midnight</p>
-    <h2 class="flash-heading">First Month.<br>Half the Price.</h2>
-    <p class="flash-sub">Full personal brand management for DFW realtors. This week only.</p>
-    <div class="flash-price">
-      <span class="flash-old">$1,000</span>
-      <span class="flash-new">$500</span>
-    </div>
-    <p class="flash-scarcity">🔴 Only 2 spots at this price. When they're gone — they're gone.</p>
-    <a href="https://cal.com/carlos-perez-wn8kxs/free-discovery-call" target="_blank" class="flash-btn">Claim your spot now</a>
-    <button class="flash-dismiss" onclick="closeModal()">No thanks, I'll pay full price later</button>
-  </div>
-</div>
-<script>
-  function closeModal() {
-    document.getElementById('flashModal').classList.add('hidden');
-  }
-</script>
+
 
 <nav>
   <div class="logo">Suite <span>99</span></div>
-  <a href="#book" class="nav-btn">Book a call</a>
+  <div style="display:flex; align-items:center; gap:1rem;">
+    <a href="https://notion.so" target="_blank" style="font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; padding:0.6rem 1rem;">Client Login</a>
+    <a href="#book" class="nav-btn">Book a call</a>
+  </div>
 </nav>
 
 <section class="hero">
@@ -650,16 +533,12 @@ footer {
       <p class="section-label">Pricing</p>
       <h2>One retainer. Everything included.</h2>
       <p>No hidden fees, no à la carte, no surprises. One flat monthly rate covers your full brand presence.</p>
-      <p style="margin-top: 1rem; font-size: 0.85rem; color: #b8946a; font-weight: 500; letter-spacing: 0.04em;">⚠ Flash sale ends Sunday — only 2 spots at this price.</p>
+      <p style="margin-top: 1rem; font-size: 0.85rem; color: #b8946a; font-weight: 500; letter-spacing: 0.04em;">DFW's go-to personal branding agency for real estate agents.</p>
     </div>
     <div class="pricing-card">
       <div class="pricing-head">
-        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:0.3rem;">
-          <span style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:rgba(255,255,255,0.3); text-decoration:line-through;">$1,000</span>
-          <span style="font-size:0.68rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase;">Flash sale</span>
-        </div>
-        <div class="price-amount">$500</div>
-        <div class="price-period">this month only · then $1,000/mo · cancel anytime</div>
+        <div class="price-amount">$1,000</div>
+        <div class="price-period">per month · cancel anytime</div>
       </div>
       <div class="pricing-body">
         <ul class="feature-list">
@@ -672,17 +551,57 @@ footer {
         </ul>
       </div>
       <div class="pricing-foot">
-        <a href="https://cal.com/carlos-perez-wn8kxs/free-discovery-call" target="_blank" class="pricing-btn">Book your free discovery call</a>
+        <a href="https://cal.com/thesuite99/30min" target="_blank" class="pricing-btn">Book your free discovery call</a>
         <p class="pricing-micro">Card required at booking · $50 no-show fee applies</p>
       </div>
     </div>
   </div>
 </section>
 
+
+<hr class="rule">
+
+<section class="section" id="products">
+  <div style="text-align:center; margin-bottom:3.5rem;">
+    <p class="section-label">Digital Products</p>
+    <h2 style="margin-bottom:1rem;">Not ready for a retainer? Start here.</h2>
+    <p style="font-size:0.88rem; color:var(--muted); font-weight:300; max-width:480px; margin:0 auto; line-height:1.85;">Get a professional review of your Instagram and LinkedIn — with a clear action plan to fix what's hurting your reach.</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:800px; margin:0 auto;">
+    <div style="border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+      <div style="background:var(--navy); padding:2rem;">
+        <p style="font-size:0.68rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem;">Most Popular</p>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:3.8rem; font-weight:400; color:var(--white); line-height:1;">$47</div>
+        <div style="font-size:0.75rem; color:rgba(255,255,255,0.35); margin-top:0.4rem; font-weight:300; letter-spacing:0.04em;">one-time · delivered in 48 hours</div>
+      </div>
+      <div style="padding:1.8rem 2rem;">
+        <p style="font-size:0.88rem; font-weight:500; color:var(--navy); margin-bottom:1rem;">Suite 99 Brand Audit</p>
+        <ul class="feature-list">
+          <li><span class="dot"></span>Full Instagram profile review</li>
+          <li><span class="dot"></span>LinkedIn profile review</li>
+          <li><span class="dot"></span>Written breakdown of every gap</li>
+          <li><span class="dot"></span>Prioritised action plan to fix it</li>
+          <li><span class="dot"></span>Delivered as a PDF in 48 hours</li>
+        </ul>
+      </div>
+      <div style="padding:1.5rem 2rem; border-top:1px solid var(--border); background:var(--off);">
+        <a href="https://buy.stripe.com/test_cNi9AM8RX7pNaQ1g3U8IU00" target="_blank" class="pricing-btn">Get your audit — $47</a>
+        <p class="pricing-micro">Instant confirmation · results in 48 hours</p>
+      </div>
+    </div>
+    <div style="border:1px solid var(--border); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:2.5rem; text-align:center; background:var(--off);">
+      <p style="font-size:0.68rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">More coming soon</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--navy); margin-bottom:0.8rem;">Realtor Instagram<br>Starter Kit</p>
+      <p style="font-size:0.83rem; color:var(--muted); font-weight:300; line-height:1.75;">10 Canva post templates, story templates, and a bio formula — built for DFW realtors.</p>
+      <p style="margin-top:1.2rem; font-size:0.75rem; color:var(--gold); font-weight:500;">Launching soon</p>
+    </div>
+  </div>
+</section>
+
 <div class="cta-section">
   <h2>Ready to own your market online?</h2>
-  <p>Flash sale ends Sunday midnight. First month is $500 instead of $1,000. Only 2 spots left — book now before someone else takes yours.</p>
-  <a href="https://cal.com/carlos-perez-wn8kxs/free-discovery-call" target="_blank" class="btn-light">Book a free discovery call</a>
+  <p>Book a free 30-minute call. No pressure, no pitch deck. Just an honest conversation about your brand.</p>
+  <a href="https://cal.com/thesuite99/30min" target="_blank" class="btn-light">Book a free discovery call</a>
 </div>
 
 <footer>
