@@ -3,26 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suite 99 — Personal Branding for Real Estate Professionals</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Suite 99 — Personal Branding for DFW Real Estate Agents</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --navy: #0c1e3c;
   --navy-2: #162d52;
+  --navy-light: #1e3560;
   --gold: #b8946a;
+  --gold-light: #d4b08a;
   --white: #ffffff;
   --off: #f6f5f2;
+  --off-2: #f0ede8;
   --text: #0c1e3c;
   --muted: #7a8399;
   --border: #e4e7ef;
+  --border-dark: #d0d4df;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background: var(--white);
   color: var(--text);
   font-size: 15px;
@@ -30,6 +34,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ── FADE IN ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -41,6 +58,7 @@ nav {
   padding: 0 3rem;
   background: rgba(255,255,255,0.97);
   border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
 }
 
 .logo {
@@ -50,11 +68,10 @@ nav {
   color: var(--navy);
   letter-spacing: 0.04em;
 }
-
 .logo span { color: var(--gold); }
 
 .nav-btn {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -65,47 +82,79 @@ nav {
   border-radius: 2px;
   transition: all 0.2s;
 }
-
 .nav-btn:hover { background: var(--navy); color: var(--white); }
 
+/* ── HERO ── */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding: 100px 3rem 80px;
-  max-width: 1000px;
-  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-inner { max-width: 620px; }
+.hero::before {
+  content: '99';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38vw;
+  font-weight: 400;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(12, 30, 60, 0.04);
+  position: absolute;
+  right: -4vw;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+
+.hero-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 640px;
+}
 
 .eyebrow {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  display: inline-block;
 }
 
 h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 400;
-  line-height: 1.08;
+  line-height: 1.07;
   color: var(--navy);
   letter-spacing: -0.01em;
   margin-bottom: 1.8rem;
 }
-
 h1 em { font-style: italic; color: var(--gold); }
 
 .hero-sub {
-  font-size: 0.98rem;
+  font-size: 1rem;
   color: var(--muted);
   font-weight: 300;
-  line-height: 1.85;
-  max-width: 460px;
+  line-height: 1.9;
+  max-width: 480px;
   margin-bottom: 2.8rem;
 }
 
@@ -113,38 +162,41 @@ h1 em { font-style: italic; color: var(--gold); }
   display: inline-block;
   background: var(--navy);
   color: var(--white);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1rem 2.4rem;
+  padding: 1rem 2.6rem;
   border-radius: 2px;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
 }
-
-.btn:hover { background: var(--navy-2); }
+.btn:hover { background: var(--navy-2); transform: translateY(-1px); }
 
 .hero-micro {
   display: block;
   margin-top: 1rem;
-  font-size: 0.73rem;
+  font-size: 0.71rem;
   color: var(--muted);
   font-weight: 300;
+  letter-spacing: 0.02em;
 }
 
 .rule { border: none; border-top: 1px solid var(--border); }
 
-.what-line {
+/* ── TICKER ── */
+.ticker-bar {
   background: var(--navy);
-  padding: 1rem 3rem;
+  padding: 0.95rem 3rem;
   display: flex;
   align-items: center;
   gap: 3rem;
+  overflow-x: auto;
 }
+.ticker-bar::-webkit-scrollbar { display: none; }
 
-.what-line strong {
-  font-size: 0.7rem;
+.ticker-label {
+  font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -152,25 +204,36 @@ h1 em { font-style: italic; color: var(--gold); }
   white-space: nowrap;
 }
 
-.what-line span {
-  font-size: 0.7rem;
+.ticker-item {
+  font-size: 0.68rem;
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.38);
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
 }
 
+.ticker-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ── SECTION BASE ── */
 .section {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 90px 3rem;
+  padding: 96px 3rem;
 }
 
 .section-label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1.2rem;
@@ -178,28 +241,179 @@ h1 em { font-style: italic; color: var(--gold); }
 
 h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(2rem, 4vw, 2.9rem);
   font-weight: 400;
   color: var(--navy);
-  line-height: 1.2;
+  line-height: 1.18;
   letter-spacing: -0.01em;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.6rem;
 }
 
+/* ── PAIN SECTION ── */
+.pain-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+
+.pain-body {
+  font-size: 0.93rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.95;
+}
+
+.pain-body p + p { margin-top: 1.2rem; }
+
+.pain-body strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.pullquote {
+  border-left: 2px solid var(--gold);
+  padding: 1.6rem 2rem;
+  margin-top: 2rem;
+  background: var(--off);
+  border-radius: 0 4px 4px 0;
+}
+
+.pullquote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+.pullquote-source {
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.pain-right { padding-top: 0.5rem; }
+
+.pain-tension {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.tension-item {
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tension-item:hover {
+  border-color: var(--gold);
+  box-shadow: 0 2px 16px rgba(184, 148, 106, 0.08);
+}
+
+.tension-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--gold);
+  border-radius: 4px 0 0 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tension-item:hover::before { opacity: 1; }
+
+.tension-title {
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+
+.tension-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ── STATS STRIP ── */
+.stats-strip {
+  background: var(--navy);
+  padding: 0;
+}
+
+.stats-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 64px 3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.stat-item {
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+.stat-item:first-child { border-left: none; padding-left: 0; }
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.stat-num em {
+  font-size: 1.4rem;
+  font-style: normal;
+  color: var(--gold);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+.stat-source {
+  font-size: 0.63rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.2);
+  margin-top: 0.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── SERVICES GRID ── */
 .services {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border: 1px solid var(--border);
   border-radius: 4px;
   overflow: hidden;
+  margin-top: 3.5rem;
 }
 
 .service {
-  padding: 2.5rem;
+  padding: 2.6rem;
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
 }
 
+.service:hover { background: var(--off); }
 .service:nth-child(2n) { border-right: none; }
 .service:nth-child(3), .service:nth-child(4) { border-bottom: none; }
 
@@ -207,7 +421,7 @@ h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
   font-weight: 400;
-  color: var(--border);
+  color: var(--border-dark);
   line-height: 1;
   margin-bottom: 1.2rem;
 }
@@ -220,26 +434,82 @@ h2 {
 }
 
 .service-desc {
-  font-size: 0.83rem;
+  font-size: 0.82rem;
   color: var(--muted);
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
+/* ── DIFFERENTIATOR ── */
 .alt { background: var(--off); }
 
+.diff-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.diff-left p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.diff-points {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0.5rem;
+}
+
+.diff-point {
+  padding: 1.3rem 0;
+  border-top: 1px solid var(--border-dark);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.diff-point:last-child { border-bottom: 1px solid var(--border-dark); }
+
+.diff-arrow {
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-weight: 500;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.diff-point-text {
+  font-size: 0.83rem;
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.diff-point-text span {
+  font-weight: 300;
+  color: var(--muted);
+}
+
+/* ── HOW IT WORKS ── */
 .steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
+  margin-top: 3.5rem;
 }
 
-.step { padding-top: 1.2rem; border-top: 1px solid var(--border); }
+.step { padding-top: 1.2rem; border-top: 2px solid var(--border); position: relative; transition: border-color 0.2s; }
+.step:hover { border-top-color: var(--gold); }
 
 .step-n {
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   color: var(--gold);
   margin-bottom: 0.8rem;
   text-transform: uppercase;
@@ -249,16 +519,62 @@ h2 {
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--navy);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .step-desc {
   font-size: 0.8rem;
   color: var(--muted);
   font-weight: 300;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
+/* ── OBJECTIONS ── */
+.objections-list { margin-top: 3.5rem; }
+
+.objection-item {
+  border-bottom: 1px solid var(--border);
+  padding: 2.8rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.objection-item:first-child { border-top: 1px solid var(--border); }
+
+.objection-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+}
+
+.objection-q {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+.objection-a {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.9;
+  padding-top: 0.2rem;
+}
+
+.objection-a strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── PRICING ── */
 .pricing-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -269,40 +585,44 @@ h2 {
 .pricing-left h2 { margin-bottom: 1rem; }
 
 .pricing-left p {
-  font-size: 0.88rem;
+  font-size: 0.87rem;
   color: var(--muted);
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.9;
 }
+
+.pricing-left p + p { margin-top: 1rem; }
 
 .pricing-card {
   border: 1px solid var(--border);
   border-radius: 4px;
   overflow: hidden;
+  box-shadow: 0 4px 32px rgba(12,30,60,0.08);
 }
 
 .pricing-head {
   background: var(--navy);
-  padding: 2rem;
+  padding: 2.2rem;
 }
 
 .price-amount {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 3.8rem;
+  font-size: 4rem;
   font-weight: 400;
   color: var(--white);
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .price-period {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.35);
-  margin-top: 0.4rem;
+  font-size: 0.73rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 0.5rem;
   font-weight: 300;
   letter-spacing: 0.04em;
 }
 
-.pricing-body { padding: 1.8rem 2rem; }
+.pricing-body { padding: 2rem; }
 
 .feature-list { list-style: none; }
 
@@ -310,11 +630,12 @@ h2 {
   display: flex;
   align-items: flex-start;
   gap: 0.8rem;
-  padding: 0.65rem 0;
+  padding: 0.7rem 0;
   border-bottom: 1px solid var(--border);
   font-size: 0.83rem;
   color: var(--text);
   font-weight: 300;
+  line-height: 1.5;
 }
 
 .feature-list li:last-child { border-bottom: none; }
@@ -328,7 +649,7 @@ h2 {
 }
 
 .pricing-foot {
-  padding: 1.5rem 2rem;
+  padding: 1.6rem 2rem;
   border-top: 1px solid var(--border);
   background: var(--off);
 }
@@ -338,66 +659,201 @@ h2 {
   text-align: center;
   background: var(--navy);
   color: var(--white);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 0.9rem;
+  padding: 1rem;
   border-radius: 2px;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
 }
-
-.pricing-btn:hover { background: var(--navy-2); }
+.pricing-btn:hover { background: var(--navy-2); transform: translateY(-1px); }
 
 .pricing-micro {
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 0.69rem;
   color: var(--muted);
   margin-top: 0.75rem;
   font-weight: 300;
 }
 
+/* ── PRODUCTS ── */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.product-card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.product-head {
+  background: var(--navy);
+  padding: 2.2rem;
+}
+
+.product-tag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.product-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.product-period {
+  font-size: 0.73rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 0.4rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.product-body { padding: 2rem; }
+
+.product-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+
+.product-foot {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border);
+  background: var(--off);
+}
+
+.coming-card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  text-align: center;
+  background: var(--off);
+}
+
+.coming-tag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.coming-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.65rem;
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 0.8rem;
+}
+
+.coming-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.coming-soon {
+  margin-top: 1.2rem;
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── CTA SECTION ── */
 .cta-section {
   background: var(--navy);
-  padding: 100px 3rem;
+  padding: 110px 3rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(184,148,106,0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .cta-section h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
   font-weight: 400;
   color: var(--white);
   letter-spacing: -0.01em;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.cta-section h2 em {
+  font-style: italic;
+  color: var(--gold-light);
 }
 
 .cta-section p {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.4);
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.38);
   font-weight: 300;
-  max-width: 400px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.85;
+  max-width: 420px;
+  margin: 0 auto 2.8rem;
+  line-height: 1.9;
+  position: relative;
 }
 
 .btn-light {
   display: inline-block;
   background: var(--white);
   color: var(--navy);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1rem 2.4rem;
+  padding: 1rem 2.6rem;
   border-radius: 2px;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.15s;
+  position: relative;
+}
+.btn-light:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.cta-micro {
+  display: block;
+  margin-top: 1.2rem;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.22);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  position: relative;
 }
 
-.btn-light:hover { opacity: 0.88; }
-
+/* ── FOOTER ── */
 footer {
   padding: 1.8rem 3rem;
   border-top: 1px solid var(--border);
@@ -415,199 +871,431 @@ footer {
 }
 
 .footer-text {
-  font-size: 0.73rem;
+  font-size: 0.71rem;
   color: var(--muted);
   font-weight: 300;
   letter-spacing: 0.04em;
 }
 
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .pain-wrap, .diff-wrap, .pricing-wrap { grid-template-columns: 1fr; gap: 3rem; }
+  .objection-item { grid-template-columns: 1fr; gap: 1rem; }
+  .stats-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .stat-item { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.5rem; }
+  .stat-item:first-child, .stat-item:nth-child(2) { border-top: none; padding-top: 0; }
+}
+
 @media (max-width: 768px) {
   nav, footer { padding: 0 1.5rem; }
-  .hero, .section, .cta-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero, .section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero::before { display: none; }
+  .cta-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .stats-inner { padding: 48px 1.5rem; }
   .services { grid-template-columns: 1fr; }
   .service:nth-child(2n) { border-right: 1px solid var(--border); }
   .service:nth-child(3) { border-bottom: 1px solid var(--border); }
-  .steps { grid-template-columns: 1fr 1fr; }
-  .pricing-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .products-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-  #products .section > div:last-child { grid-template-columns: 1fr; }
-  .what-line { gap: 1.5rem; padding: 1rem 1.5rem; overflow-x: auto; }
+  .ticker-bar { gap: 2rem; padding: 0.95rem 1.5rem; }
+  .stats-inner { grid-template-columns: 1fr 1fr; }
 }
-
 </style>
 </head>
 <body>
 
-
-
+<!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
 <nav>
   <div class="logo">Suite <span>99</span></div>
-  <div style="display:flex; align-items:center; gap:1rem;">
-    <a href="https://notion.so" target="_blank" style="font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; padding:0.6rem 1rem;">Client Login</a>
-    <a href="#book" class="nav-btn">Book a call</a>
-  </div>
+  <a href="#book" class="nav-btn">Book a call</a>
 </nav>
 
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-inner">
-    <p class="eyebrow">Personal Branding · DFW Real Estate</p>
-    <h1>Look like the <em>agent</em> everyone calls first</h1>
-    <p class="hero-sub">We manage your LinkedIn and Instagram every month — so your brand stays sharp while you stay focused on closing.</p>
-    <a href="#book" class="btn">Book a free discovery call</a>
-    <span class="hero-micro">30 minutes · no commitment · $50 no-show fee applies</span>
+    <p class="eyebrow reveal">Personal Branding · DFW Real Estate</p>
+    <h1 class="reveal reveal-delay-1">You became an agent.<br>Not a content <em>creator.</em></h1>
+    <p class="hero-sub reveal reveal-delay-2">Your clients Google you before they call. Your referrals check your Instagram before they reach out. We build and manage a brand that reflects the agent you actually are — every month, without you lifting a finger.</p>
+    <div class="reveal reveal-delay-3">
+      <a href="#book" class="btn">Book a free discovery call</a>
+      <span class="hero-micro">30 minutes · no commitment · $50 no-show fee applies</span>
+    </div>
   </div>
 </section>
 
 <hr class="rule">
 
-<div class="what-line">
-  <strong>What you get</strong>
-  <span>Branded posts monthly</span>
-  <span>Strategy call</span>
-  <span>Story templates</span>
-  <span>Profile management</span>
-  <span>Dedicated designer</span>
+<!-- TICKER -->
+<div class="ticker-bar">
+  <span class="ticker-label">What you get</span>
+  <div class="ticker-item">
+    <span class="ticker-dot"></span> Branded posts monthly
+    <span class="ticker-dot"></span> Monthly strategy call
+    <span class="ticker-dot"></span> Story templates
+    <span class="ticker-dot"></span> Profile management
+    <span class="ticker-dot"></span> Dedicated designer
+    <span class="ticker-dot"></span> Cancel anytime
+  </div>
 </div>
 
+
+<!-- ══════════════════════════════════════════
+     PAIN SECTION
+══════════════════════════════════════════ -->
 <section class="section">
-  <p class="section-label">What's included</p>
-  <h2>Everything your brand needs, handled every month</h2>
-  <div class="services">
+  <div class="pain-wrap">
+    <div class="pain-left">
+      <p class="section-label reveal">What's actually happening</p>
+      <h2 class="reveal">Your brokerage promised support.<br>You got a Canva link.</h2>
+      <div class="pain-body reveal">
+        <p>Most real estate agents never asked to become content creators. You got into this business to help people buy and sell homes — not to film videos, write captions, and reverse-engineer the Instagram algorithm.</p>
+        <p>But the market shifted. Consumers now research agents online before they call. They compare you to the agent down the street who's been posting consistently for six months. And if your presence looks quiet, inconsistent, or outdated, <strong>they move on before you ever get the chance to show them what you can actually do.</strong></p>
+        <p>The answer isn't to post more. It's to stop doing it yourself.</p>
+        <div class="pullquote">
+          <p class="pullquote-text">"You're trying to build a plane you were never trained to fly."</p>
+          <p class="pullquote-source">— r/realtors</p>
+        </div>
+      </div>
+    </div>
+    <div class="pain-right">
+      <div class="pain-tension reveal">
+        <div class="tension-item">
+          <div class="tension-title">You post for a few weeks. Then stop.</div>
+          <div class="tension-desc">Not because you don't care. Because it's exhausting, it's not converting, and nobody taught you how to do it.</div>
+        </div>
+        <div class="tension-item">
+          <div class="tension-title">A newer agent is winning listings you should have.</div>
+          <div class="tension-desc">Not because they're better. Because they look more established online when someone Googles them at 10pm.</div>
+        </div>
+        <div class="tension-item">
+          <div class="tension-title">You post and hear nothing back.</div>
+          <div class="tension-desc">No messages. No leads. Just likes from other agents in your market. It starts to feel like emptying your cup at the same slot machine.</div>
+        </div>
+        <div class="tension-item">
+          <div class="tension-title">The market is harder than it's ever been.</div>
+          <div class="tension-desc">Fewer transactions. More competition. Higher bar to prove your value before a buyer will even sign. And a growing expectation to be visible online too.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     STATS STRIP
+══════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">40<em>k+</em></div>
+      <div class="stat-label">MLS subscribers across North Texas competing for the same business</div>
+      <div class="stat-source">MetroTex / NTREIS</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num">4<em>M</em></div>
+      <div class="stat-label">U.S. home sales in 2024 — down from 6.1M in 2021. Fewer deals, same number of agents.</div>
+      <div class="stat-source">NAR 2024</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num">88<em>%</em></div>
+      <div class="stat-label">Buyers still use an agent — but start their search online before they call anyone</div>
+      <div class="stat-source">NAR Generational Report</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num">#1</div>
+      <div class="stat-label">Factor sellers use to choose their agent: reputation and trustworthiness — not fee</div>
+      <div class="stat-source">NAR Buyer/Seller Report</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     WHAT'S INCLUDED
+══════════════════════════════════════════ -->
+<section class="section">
+  <p class="section-label reveal">What's included</p>
+  <h2 class="reveal">Everything your brand needs,<br>handled every month.</h2>
+  <div class="services reveal">
     <div class="service">
       <div class="service-n">01</div>
       <div class="service-title">Branded Social Posts</div>
-      <div class="service-desc">12–16 professionally designed posts per month for LinkedIn and Instagram, built around your voice and listings.</div>
+      <div class="service-desc">12–16 professionally designed posts per month for LinkedIn and Instagram. Built around your voice, your market, and your listings — not a real estate template with your name swapped in.</div>
     </div>
     <div class="service">
       <div class="service-n">02</div>
       <div class="service-title">Monthly Strategy Call</div>
-      <div class="service-desc">A focused 30-minute call each month to align your content with your goals and what's happening in your market.</div>
+      <div class="service-desc">A focused 30-minute call each month to align your content with your goals, your listings, and what's actually happening in the DFW market right now.</div>
     </div>
     <div class="service">
       <div class="service-n">03</div>
       <div class="service-title">Story Templates</div>
-      <div class="service-desc">Custom branded story templates so your presence stays polished and consistent between posts.</div>
+      <div class="service-desc">Custom branded story templates so your presence stays polished and consistent every week — not just when you have a listing to announce.</div>
     </div>
     <div class="service">
       <div class="service-n">04</div>
       <div class="service-title">Profile Maintenance</div>
-      <div class="service-desc">Bio updates, banner refreshes, and brand consistency management across all your platforms.</div>
+      <div class="service-desc">Bio updates, banner refreshes, and brand consistency management across all your platforms. The things that matter when someone Googles your name before deciding whether to call.</div>
     </div>
   </div>
 </section>
 
 <hr class="rule">
 
+
+<!-- ══════════════════════════════════════════
+     DIFFERENTIATOR
+══════════════════════════════════════════ -->
 <div class="alt">
   <div class="section">
-    <p class="section-label">How it works</p>
-    <h2>Simple from day one</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-n">01</div>
-        <div class="step-title">Book a free call</div>
-        <div class="step-desc">We talk about your goals and what you want people to feel when they find you online.</div>
+    <div class="diff-wrap">
+      <div class="diff-left">
+        <p class="section-label reveal">Why Suite 99</p>
+        <h2 class="reveal">We don't make you sound like every other agent.<br>We make you sound like <em>you.</em></h2>
+        <div class="reveal">
+          <p>Most tools sold to real estate agents make you look like a real estate agent. Generic market updates. Just-listed graphics in stock-photo fonts. Content that could belong to any of the 40,000 agents in North Texas.</p>
+          <p>That's not a brand. That's content for content's sake.</p>
+          <p>We build around your voice, your market knowledge, and your specific niche in DFW — so when someone comes across your profile, they feel like they already know you before the first conversation. That's what turns a Google search into a phone call.</p>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-n">02</div>
-        <div class="step-title">We build your brand</div>
-        <div class="step-desc">Colors, fonts, tone, and templates — locked in and consistent from day one.</div>
-      </div>
-      <div class="step">
-        <div class="step-n">03</div>
-        <div class="step-title">Content delivered</div>
-        <div class="step-desc">Every month we deliver ready-to-post content. You approve it — we handle the rest.</div>
-      </div>
-      <div class="step">
-        <div class="step-n">04</div>
-        <div class="step-title">You stay focused</div>
-        <div class="step-desc">Your online presence runs in the background while you focus on clients and deals.</div>
+      <div class="diff-right reveal">
+        <div class="diff-points">
+          <div class="diff-point">
+            <span class="diff-arrow">→</span>
+            <div class="diff-point-text">Not templates. <span>Custom content built around your voice and your specific market — not a real estate brand with your name swapped in.</span></div>
+          </div>
+          <div class="diff-point">
+            <span class="diff-arrow">→</span>
+            <div class="diff-point-text">Not a VA. <span>A dedicated designer who owns your brand, knows your aesthetic, and delivers consistent work every single month.</span></div>
+          </div>
+          <div class="diff-point">
+            <span class="diff-arrow">→</span>
+            <div class="diff-point-text">Not generic. <span>Built for DFW. Your market, your neighborhoods, your clients — not "real estate agents in general."</span></div>
+          </div>
+          <div class="diff-point">
+            <span class="diff-arrow">→</span>
+            <div class="diff-point-text">Not a subscription you forget about. <span>A retainer with a real human who shows up for your brand every month without you having to chase them.</span></div>
+          </div>
+        </div>
+        <div style="margin-top: 2rem; padding: 1.4rem 1.6rem; background: var(--white); border: 1px solid var(--border-dark); border-radius: 4px;">
+          <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; color:var(--navy); line-height:1.55; margin-bottom:0.5rem;">"Trust in DFW is built — or lost — at scale."</p>
+          <p style="font-size:0.68rem; font-weight:400; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase;">— DFW Agent Magazine</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<section class="section" id="book">
-  <div class="pricing-wrap">
-    <div class="pricing-left">
-      <p class="section-label">Pricing</p>
-      <h2>One retainer. Everything included.</h2>
-      <p>No hidden fees, no à la carte, no surprises. One flat monthly rate covers your full brand presence.</p>
-      <p style="margin-top: 1rem; font-size: 0.85rem; color: #b8946a; font-weight: 500; letter-spacing: 0.04em;">DFW's go-to personal branding agency for real estate agents.</p>
+
+<!-- ══════════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════════ -->
+<section class="section">
+  <p class="section-label reveal">How it works</p>
+  <h2 class="reveal">Simple from day one.</h2>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-n">01</div>
+      <div class="step-title">Book a free call</div>
+      <div class="step-desc">We talk about your goals, your market, your voice, and who you want to be known as in DFW. No pitch deck. Just an honest conversation.</div>
     </div>
-    <div class="pricing-card">
-      <div class="pricing-head">
-        <div class="price-amount">$1,000</div>
-        <div class="price-period">per month · cancel anytime</div>
-      </div>
-      <div class="pricing-body">
-        <ul class="feature-list">
-          <li><span class="dot"></span>12–16 branded posts (LinkedIn + Instagram)</li>
-          <li><span class="dot"></span>Monthly 30-min strategy call</li>
-          <li><span class="dot"></span>Custom story templates each month</li>
-          <li><span class="dot"></span>Bio and profile updates as needed</li>
-          <li><span class="dot"></span>Brand consistency management</li>
-          <li><span class="dot"></span>Dedicated designer, just for you</li>
-        </ul>
-      </div>
-      <div class="pricing-foot">
-        <a href="https://cal.com/thesuite99/30min" target="_blank" class="pricing-btn">Book your free discovery call</a>
-        <p class="pricing-micro">Card required at booking · $50 no-show fee applies</p>
-      </div>
+    <div class="step reveal reveal-delay-1">
+      <div class="step-n">02</div>
+      <div class="step-title">We build your brand</div>
+      <div class="step-desc">Colors, fonts, tone, and templates — locked in and consistent from day one, so every post feels like it came from the same person.</div>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-n">03</div>
+      <div class="step-title">Content delivered monthly</div>
+      <div class="step-desc">Every month we deliver ready-to-post content. You review, approve, and post. We handle everything else.</div>
+    </div>
+    <div class="step reveal reveal-delay-3">
+      <div class="step-n">04</div>
+      <div class="step-title">You focus on closing</div>
+      <div class="step-desc">Your online presence runs in the background while you do the work you were actually trained for — and that you actually get paid for.</div>
     </div>
   </div>
 </section>
 
-
 <hr class="rule">
 
-<section class="section" id="products">
-  <div style="text-align:center; margin-bottom:3.5rem;">
-    <p class="section-label">Digital Products</p>
-    <h2 style="margin-bottom:1rem;">Not ready for a retainer? Start here.</h2>
-    <p style="font-size:0.88rem; color:var(--muted); font-weight:300; max-width:480px; margin:0 auto; line-height:1.85;">Get a professional review of your Instagram and LinkedIn — with a clear action plan to fix what's hurting your reach.</p>
-  </div>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:800px; margin:0 auto;">
-    <div style="border:1px solid var(--border); border-radius:4px; overflow:hidden;">
-      <div style="background:var(--navy); padding:2rem;">
-        <p style="font-size:0.68rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem;">Most Popular</p>
-        <div style="font-family:'Cormorant Garamond',serif; font-size:3.8rem; font-weight:400; color:var(--white); line-height:1;">$47</div>
-        <div style="font-size:0.75rem; color:rgba(255,255,255,0.35); margin-top:0.4rem; font-weight:300; letter-spacing:0.04em;">one-time · delivered in 48 hours</div>
+
+<!-- ══════════════════════════════════════════
+     OBJECTIONS
+══════════════════════════════════════════ -->
+<section class="section">
+  <p class="section-label reveal">You might be thinking…</p>
+  <h2 class="reveal">Let's be honest about<br>the real questions.</h2>
+  <div class="objections-list">
+
+    <div class="objection-item reveal">
+      <div>
+        <div class="objection-num">01</div>
+        <div class="objection-q">"Social media doesn't actually bring in real clients."</div>
       </div>
-      <div style="padding:1.8rem 2rem;">
-        <p style="font-size:0.88rem; font-weight:500; color:var(--navy); margin-bottom:1rem;">Suite 99 Brand Audit</p>
+      <div class="objection-a">
+        You're not wrong that it's rarely a direct faucet. But your clients are Googling you. Every referral who hears your name at a dinner party checks your Instagram before they call. <strong>Social media isn't a lead machine — it's a credibility shelf.</strong> The question isn't whether to have one. It's what yours says about you right now when someone lands on it at 10pm.
+      </div>
+    </div>
+
+    <div class="objection-item reveal">
+      <div>
+        <div class="objection-num">02</div>
+        <div class="objection-q">"I've tried hiring help before and it didn't work."</div>
+      </div>
+      <div class="objection-a">
+        Most of what gets sold to agents is templates dressed up as strategy — content that could belong to any of the 40,000 agents in North Texas. <strong>We build around your specific voice, market, and niche.</strong> It looks like you, sounds like you, and is designed to make the people who already know you feel more confident about referring you.
+      </div>
+    </div>
+
+    <div class="objection-item reveal">
+      <div>
+        <div class="objection-num">03</div>
+        <div class="objection-q">"$1,000 a month is a lot right now."</div>
+      </div>
+      <div class="objection-a">
+        That's exactly what the $47 brand audit is for. <strong>Get a professional review of your Instagram and LinkedIn — with a specific, prioritized action plan — before you commit to anything.</strong> Most agents who do the audit stop asking whether the retainer is worth it.
+      </div>
+    </div>
+
+    <div class="objection-item reveal">
+      <div>
+        <div class="objection-num">04</div>
+        <div class="objection-q">"I don't want to sound templated or fake."</div>
+      </div>
+      <div class="objection-a">
+        Neither do we. The whole point is to make you sound like you — just consistently. <strong>You review and approve every piece of content before anything goes out.</strong> If it doesn't sound like you, we revise it. Your brand is the asset. Generic content defeats the purpose.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PRICING
+══════════════════════════════════════════ -->
+<div class="alt">
+  <section class="section" id="book">
+    <div class="pricing-wrap">
+      <div class="pricing-left">
+        <p class="section-label reveal">Pricing</p>
+        <h2 class="reveal">One retainer.<br>Everything handled.</h2>
+        <p class="reveal">No hidden fees, no à la carte, no surprises. One flat monthly rate covers your entire brand presence.</p>
+        <p class="reveal">The agents who look most established in DFW aren't posting more than you. They just stopped doing it themselves.</p>
+        <p class="reveal" style="margin-top: 1.2rem; font-size: 0.82rem; color: var(--gold); font-weight: 500; letter-spacing: 0.04em;">Cancel anytime. No long-term contracts.</p>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="pricing-head">
+          <div class="price-amount">$1,000</div>
+          <div class="price-period">per month · cancel anytime</div>
+        </div>
+        <div class="pricing-body">
+          <ul class="feature-list">
+            <li><span class="dot"></span>12–16 branded posts (LinkedIn + Instagram)</li>
+            <li><span class="dot"></span>Monthly 30-min strategy call</li>
+            <li><span class="dot"></span>Custom story templates each month</li>
+            <li><span class="dot"></span>Bio and profile updates as needed</li>
+            <li><span class="dot"></span>Brand consistency management</li>
+            <li><span class="dot"></span>Dedicated designer, just for you</li>
+          </ul>
+        </div>
+        <div class="pricing-foot">
+          <a href="https://cal.com/thesuite99/30min" target="_blank" class="pricing-btn">Book your free discovery call</a>
+          <p class="pricing-micro">Card required at booking · $50 no-show fee applies</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     PRODUCTS
+══════════════════════════════════════════ -->
+<section class="section">
+  <div style="text-align:center; margin-bottom:3.5rem;" class="reveal">
+    <p class="section-label">Not ready for a retainer?</p>
+    <h2 style="margin-bottom:1rem;">Start with a $47 brand audit.</h2>
+    <p style="font-size:0.88rem; color:var(--muted); font-weight:300; max-width:500px; margin:0 auto; line-height:1.9;">Get a professional review of your Instagram and LinkedIn — with a clear, prioritized action plan to fix what's hurting your credibility. Most agents who do the audit stop asking whether the retainer is worth it.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <div class="product-head">
+        <div class="product-tag">Most Popular</div>
+        <div class="product-price">$47</div>
+        <div class="product-period">one-time · delivered in 48 hours</div>
+      </div>
+      <div class="product-body">
+        <p class="product-name">Suite 99 Brand Audit</p>
         <ul class="feature-list">
           <li><span class="dot"></span>Full Instagram profile review</li>
           <li><span class="dot"></span>LinkedIn profile review</li>
           <li><span class="dot"></span>Written breakdown of every gap</li>
-          <li><span class="dot"></span>Prioritised action plan to fix it</li>
+          <li><span class="dot"></span>Prioritized action plan to fix it</li>
           <li><span class="dot"></span>Delivered as a PDF in 48 hours</li>
         </ul>
       </div>
-      <div style="padding:1.5rem 2rem; border-top:1px solid var(--border); background:var(--off);">
+      <div class="product-foot">
         <a href="https://buy.stripe.com/7sY5kE3zBfopc8n9x0a3u01" target="_blank" class="pricing-btn">Get your audit — $47</a>
         <p class="pricing-micro">Instant confirmation · results in 48 hours</p>
       </div>
     </div>
-    <div style="border:1px solid var(--border); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:2.5rem; text-align:center; background:var(--off);">
-      <p style="font-size:0.68rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">More coming soon</p>
-      <p style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--navy); margin-bottom:0.8rem;">Realtor Instagram<br>Starter Kit</p>
-      <p style="font-size:0.83rem; color:var(--muted); font-weight:300; line-height:1.75;">10 Canva post templates, story templates, and a bio formula — built for DFW realtors.</p>
-      <p style="margin-top:1.2rem; font-size:0.75rem; color:var(--gold); font-weight:500;">Launching soon</p>
+    <div class="coming-card reveal">
+      <p class="coming-tag">More coming soon</p>
+      <p class="coming-title">Realtor Instagram<br>Starter Kit</p>
+      <p class="coming-desc">10 Canva post templates, story templates, and a bio formula — built specifically for DFW realtors.</p>
+      <p class="coming-soon">Launching soon</p>
     </div>
   </div>
 </section>
 
+
+<!-- ══════════════════════════════════════════
+     CTA
+══════════════════════════════════════════ -->
 <div class="cta-section">
-  <h2>Ready to own your market online?</h2>
-  <p>Book a free 30-minute call. No pressure, no pitch deck. Just an honest conversation about your brand.</p>
-  <a href="https://cal.com/thesuite99/30min" target="_blank" class="btn-light">Book a free discovery call</a>
+  <h2 class="reveal">The agents winning in DFW<br>aren't <em>better</em> than you.</h2>
+  <p class="reveal">They just look more credible online. Book a free 30-minute call — no pressure, no pitch deck. Just an honest conversation about where your brand is and where it should be.</p>
+  <div class="reveal">
+    <a href="https://cal.com/thesuite99/30min" target="_blank" class="btn-light">Book a free discovery call</a>
+    <span class="cta-micro">30 minutes · no commitment · $50 no-show fee applies</span>
+  </div>
 </div>
 
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
 <footer>
   <div class="footer-logo">Suite <span style="color:var(--gold)">99</span></div>
   <div class="footer-text">Personal Branding for Real Estate · DFW, Texas</div>
 </footer>
+
+
+<script>
+// Scroll-based reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Trigger hero elements immediately
+setTimeout(() => {
+  document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+}, 100);
+</script>
 
 </body>
 </html>
